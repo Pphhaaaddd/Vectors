@@ -1,18 +1,22 @@
+int count;
+ArrayList<Ball> b;
 
 void setup() {
-  size(1280,720);
-  background(0);
+  size(1280, 720);
+  b = new ArrayList<Ball>();
 }
 
 void draw() {
-  pushMatrix();
+  background(255);
   
-  fill(127);
-  noStroke();
-  translate(width/2,height/2);
-  rectMode(CENTER);
-  rotate(radians(45));
-  rect(0,0,50,70);
-   
-  popMatrix();
+  
+  for (Ball b:b) {
+    b.moveToLoc(new PVector(random(width/4,width*3/4),random(height/4,height*3/4)));
+    b.display();
+  }
+  
+}
+
+void mousePressed() {
+  b.add(new Ball());
 }
