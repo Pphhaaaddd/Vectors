@@ -23,7 +23,6 @@ class Ball {
   }
 
   void update() {
-    //acceleration.mult(1/mass);
     velocity.add(acceleration);
     location.add(velocity);
     acceleration.mult(0);
@@ -31,14 +30,15 @@ class Ball {
 
   // Newton's second law of motion
   void applyForce(PVector force) {
-    acceleration.add(force);
+    PVector f = PVector.div(force,mass);
+    acceleration.add(f);
   }
 
   void bindItInScreen() {
     if (location.x > width-size/2)
     { 
       velocity.x *= -0.7;
-      location.x = width-size;
+      location.x = width-size/2;
     } else if ( location.x < size/2)
     { 
       velocity.x *= -0.7;
@@ -48,17 +48,17 @@ class Ball {
     if (location.y > height-size/2)
     { 
       velocity.y *= -0.7;
-      location.y = height-size;
+      location.y = height-size/2;
     } else if ( location.y < size/2)
     { 
       velocity.y *= -0.7;
       location.y = size/2;
     }
 
-    if (velocity.x < 0.05)
+    if (abs(velocity.x) < 0.000001)
       velocity.x=0;
 
-    if (velocity.y < 0.05)
+    if (abs(velocity.y) < 0.000001)
       velocity.y=0;
   }
 

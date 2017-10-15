@@ -16,6 +16,7 @@ void draw() {
     PVector w = new PVector(-0.1,0);
     
     //b.moveToLoc(new PVector(0,0));
+    g.mult(b.mass);
     b.applyForce(g); //Gravity
     
     if(keyPressed)
