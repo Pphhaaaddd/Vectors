@@ -37,21 +37,21 @@ class Ball {
   void bindItInScreen() {
     if (location.x > width-size/2)
     { 
-      velocity.x *= -0.7;
+      velocity.x *= -1;
       location.x = width-size/2;
     } else if ( location.x < size/2)
     { 
-      velocity.x *= -0.7;
+      velocity.x *= -1;
       location.x = size/2;
     }
 
     if (location.y > height-size/2)
     { 
-      velocity.y *= -0.7;
+      velocity.y *= -1;
       location.y = height-size/2;
     } else if ( location.y < size/2)
     { 
-      velocity.y *= -0.7;
+      velocity.y *= -1;
       location.y = size/2;
     }
 
