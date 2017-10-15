@@ -5,8 +5,9 @@ class Ball{
 
   Ball() {
     size = int(random(10, 40));
-    location = new PVector(width/2, height/2);
+    location = new PVector(0, 0);
     velocity = new PVector(random(-3, 3), random(-3, 3));
+    velocity.normalize();
   }
 
   void move() {
