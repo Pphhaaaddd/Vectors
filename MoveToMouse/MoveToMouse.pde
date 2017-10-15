@@ -11,7 +11,18 @@ void draw() {
   //translate(width/2, height/2);
   
   for (Ball b:b) {
-    b.moveToLoc(new PVector(mouseX,mouseY));
+    
+    PVector g = new PVector(0,0.1);
+    PVector w = new PVector(-0.1,0);
+    
+    //b.moveToLoc(new PVector(0,0));
+    b.applyForce(g); //Gravity
+    
+    if(keyPressed)
+    b.applyForce(w); //Wind
+    
+    b.bindItInScreen();
+    b.update();
     b.display();
   }
 }
