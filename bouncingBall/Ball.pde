@@ -6,15 +6,15 @@ class Ball{
   Ball() {
     size = int(random(10, 40));
     location = new PVector(width/2, height/2);
-    velocity = new PVector(random(-1, 1), random(-1, 1));
+    velocity = new PVector(random(-3, 3), random(-3, 3));
   }
 
   void move() {
     location.add(velocity);
-    if (location.x < size || location.x > width-size) 
+    if (location.x < -width/2 + size/2 || location.x > width/2-size/2) 
       velocity.x *= -1;
 
-    if (location.y < size || location.y > height-size) 
+    if (location.y < -height/2 + size/2 || location.y > height/2-size/2) 
       velocity.y *= -1;
   }
 

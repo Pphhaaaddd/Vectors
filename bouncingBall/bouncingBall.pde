@@ -1,13 +1,21 @@
-Ball b;
+ArrayList<Ball> b;
 
 void setup() {
   size(640, 480);
-
-  b = new Ball();
+  
+  b = new ArrayList<Ball>();
 }
 
 void draw() {
   background(0);
-  b.move();
-  b.display();
+  translate(width/2,height/2);
+  for (Ball b : b) {
+    b.move();
+    b.display();
+  }
+}
+
+void mousePressed() {
+  b.add(new Ball()); 
+  
 }
