@@ -1,6 +1,6 @@
-float r = 30;
+float r = 50;
 float a = PI/4;
-float aVel=0,aAcc=0.01;
+float aVel=0,aAcc=0.001;
 
 void setup() {
   size(640, 480);
