@@ -18,7 +18,7 @@ class Spring {
     PVector dir = PVector.sub(loc, origin);
     curLen = dist(origin.x, origin.y, loc.x, loc.y);
     dir.normalize();
-    float k=0.1;
+    float k=0.03;
     float stretch = curLen - restLen;
     dir.mult(-k*stretch);
     applyForce(dir);
@@ -35,16 +35,31 @@ class Spring {
   }
 
   void display() {
-
-    stroke(curLen);
-    int w = round(200/curLen);
-    if(w>10) w =10;
-    strokeWeight(w);
+    stroke(0);
+    strokeWeight(1);
     line(origin.x, origin.y, loc.x, loc.y);
 
     noStroke();
     fill(0);
     ellipse(loc.x, loc.y, 20, 20);
+  }
 
+  void applyDragForce(float rho) {
+    //applies a drag for with constant rho
+    //Drag = -1/2 * rho * ||v||^2 * Area * Cd * vcap
+    PVector drag = s.vel.get();
+    drag.normalize();
+
+    float speed = s.vel.mag();
+    drag.mult( -1 * rho * speed * speed);
+    s.applyForce(drag);
+  }
+
+  PVector getLoc() {
+    return loc;
+  }
+
+  void updateOrigin(PVector origin_) {
+    origin = origin_;
   }
 }

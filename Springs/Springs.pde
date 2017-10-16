@@ -1,23 +1,32 @@
 Spring s;
+Spring s2;
 
 void setup()  {
   size(640,480);
-  s = new Spring(new PVector(width/2,200));
+  s = new Spring(new PVector(width/2,400));
+  s2 = new Spring(s.getLoc());
 }
 
 void draw()  {
   background(255);
   
-  // //Drag = -1/2 * rho * ||v||^2 * Area * Cd * vcap
-  //  PVector drag = s.vel.get();
-  //  drag.normalize();
-  //  float rho = -0.01;
-  //  float speed = s.vel.mag();
-  //  drag.mult( rho * speed * speed);
-  //  s.applyForce(drag);
+  s.applyDragForce(0.01);
   
-  //s.applyForce(drag);
+  //Wind
+  if(mousePressed){
+  s.applyForce(new PVector(1,0));
+  s2.applyForce(new PVector(1,0));
+  }
+  
+  //Gravity
+  s.applyForce(new PVector(0,4));
+  s2.applyForce(new PVector(0,4));
+  
+
   s.update();
   s.display();
+  s2.updateOrigin(s.getLoc());
+  s2.update();
+  s2.display();
   
 }
